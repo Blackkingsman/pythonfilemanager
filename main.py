@@ -130,7 +130,7 @@ class Actions:
         videoformats = ['.mp4', '.mov', '.webm', '.mgg', '.mp2', '.mpeg', '.mpe', '.mpv',
                         '.ogg', '.m4p', '.m4v', '.avi', '.wmv', '.mov', '.qt',
                         '.flv', '.swf', '.avchd']
-        excelformats = ['.xlsm', '.xls', '.xlsx', '.xlsm', '.xlsb', '.xltx']
+        excelformats = ['.xlsm',  '.xlsx', '.xlsb', '.xltx']
         pdfformats = ['.pdf']
         docformats = ['.doc', '.docm', '.docx', '.dot', '.dotm', '.dotx', '.rtf', '.txt'
             , '.wps', '.xml', '.xps']
@@ -138,7 +138,7 @@ class Actions:
             , '.heif', '.indd', '.jpeg 2000', '.jpe', '.jif', '.jfif', '.jfi']
         progformats = ['.exe', '.lnk']
         audioformats = []
-        PowerPoints = []
+        PowerPoints = ['.pptx', '.pptm', '.ppt', '.pps', '.ppa' ]
         for f in os.listdir(self.directory):
             filename, file_ext = os.path.splitext(f)
             try:
@@ -147,7 +147,7 @@ class Actions:
                     pass
 
                 elif file_ext.lower() in (videoformats):
-
+                    print("Found Video")
                     videopath = self.return_path(SVideos, "Videos")
                     self.fucking_moveit(1,"", videopath, filename, file_ext)
 
@@ -162,7 +162,6 @@ class Actions:
 
 
                 elif file_ext.lower() in (excelformats):
-
                     excel_path = self.return_path(SExcel, "Excel")
                     self.fucking_moveit(1,"",excel_path, filename, file_ext)
 
@@ -176,18 +175,19 @@ class Actions:
 
 
                 elif file_ext.lower() in (docformats):
+                    print("Found Document")
                     document_path = self.return_path(SDocuments, "Documents")
                     self.fucking_moveit(1,"",document_path, filename, file_ext)
 
                     # create sub directory
 
                     sub_directory = self.create_sub(document_path, f)
-
                     # move the file to subdirectory
 
                     self.fucking_moveit(0, sub_directory, document_path, filename, file_ext)
 
                 elif file_ext.lower() in (imageformats):
+                    print("Found Image")
                     image_path = self.return_path(SImages, "Images")
                     self.fucking_moveit(1,"",image_path, filename, file_ext)
 
@@ -200,6 +200,7 @@ class Actions:
                     self.fucking_moveit(0, sub_directory, image_path, filename, file_ext)
 
                 elif file_ext.lower() in (pdfformats):
+                    print("Found PDF")
                     pdf_path = self.return_path(sPDF, "PDF")
                     self.fucking_moveit(1,"",pdf_path, filename, file_ext)
 
@@ -212,6 +213,7 @@ class Actions:
                     self.fucking_moveit(0, sub_directory, pdf_path, filename, file_ext)
 
                 elif file_ext.lower() in (progformats):
+                    print("FOUND PROG")
                     program_path = self.return_path(SPrograms, "Programs")
                     self.fucking_moveit(1,"",program_path, filename, file_ext)
 
@@ -241,6 +243,7 @@ def create_directory_path():
     f = open("watchdirectory.txt", "w+")
     f.write(foldername)
     f.close()
+def video_location():
 
 
 def gui():
