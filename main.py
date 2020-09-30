@@ -243,8 +243,6 @@ def create_directory_path():
     f = open("watchdirectory.txt", "w+")
     f.write(foldername)
     f.close()
-def video_location():
-
 
 def gui():
     global DIRECTORY_TO_WATCH
@@ -260,7 +258,7 @@ def gui():
 
 
 DIRECTORY_TO_WATCH = ""
-SVideos = r"C:\Users\tdphi\Desktop\Videos"
+SVideos = r"E:\GamingVideos"
 SPrograms = ""
 SImages = ""
 SDocuments = ""
